@@ -11,6 +11,12 @@ group :test do
   gem 'rspec-rails', '2.0.0.beta.11'
 end
 
+group :cucumber do
+  gem 'cucumber-rails'
+  gem 'capybara'
+end
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
