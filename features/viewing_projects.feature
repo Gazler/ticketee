@@ -4,7 +4,7 @@ Feature: Viewing projects
   I want to be able to see a list of available projects
 
   Background:
- Given there are the following users:
+    Given there are the following users:
     | email| password |
     | user@ticketee.com | password |
     And I am signed in as them
