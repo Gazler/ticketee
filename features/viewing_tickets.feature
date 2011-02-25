@@ -18,6 +18,10 @@ Feature: Viewing tickets
         | Standards compliance | Isn't a joke. |
 
     Given I am on the homepage
+    And "user@ticketee.com" can view the "TextMate 2" project
+    And "user@ticketee.com" can view the "Internet Explorer" project
+    And I am signed in as them
+
 
     Scenario: Viewing tickets for a given project
       When I follow "TextMate 2"
