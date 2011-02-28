@@ -2,11 +2,11 @@
 <%= simple_format(@ticket.description) %>
 <small>Created by <%= @ticket.user.email %></small>
 <menu>
-<%= authorized?("edit tickets", Project, @project.id) do %>
+<%= authorized?("edit tickets", @project) do %>
   <%= link_to "Edit", edit_project_ticket_path(@project, @ticket) %>
 <% end %>
 
-<%= authorized?("delete tickets", Project, @project.id) do %>
+<%= authorized?("delete tickets", @project) do %>
   <%= link_to "Delete", [@project, @ticket], :method => :delete, :confirm => "Are you sure?" %>
 <% end %>
 

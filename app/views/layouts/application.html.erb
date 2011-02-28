@@ -14,6 +14,7 @@
     <%= link_to "Sign in", new_user_session_path %>
   <% else %>
     Signed in as <%= current_user.email %>
+    <%= link_to "Sign out", destroy_user_session_path %>
   <% end %>
   <%= admins_only do %>
     <%= link_to "Admin", admin_root_path %>

@@ -2,6 +2,11 @@ Given /^"([^"]*)" can ([^"]*?) ([o|i]n)?\s?the "([^"]*)" project$/ do |user, per
   create_permission(user, find_project(project), permission)
 end
 
+When /^I check "([^"]*)" for "([^"]*)"$/ do |permission, name|
+  project = Project.find_by_name!(name)
+  steps(%Q{When I check "permissions_#{project.id}_#{permission.downcase.gsub(" ", "_")}"})
+end
+
 def create_permission(email, object, action)
   Permission.create!(:user_id => User.find_by_email!(email), :object => object, :action => action)
 end
