@@ -11,5 +11,13 @@ module ApplicationHelper
     nil
   end
 
+  def authorized?(permission, object, objectid, &block)
+    if can?(permission.to_sym, object, objectid) || (current_user && current_user.admin?)
+      block.call
+    end
+  nil
+  end
+
+
 end
 
