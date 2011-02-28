@@ -8,6 +8,11 @@ Then /^I should not see the "([^\"]*)" link$/ do |text|
   "Expected to not see the #{text.inspect} link, but did.")
 end
 
+Given /^I have run the seed task$/ do
+  load Rails.root + "db/seeds.rb"
+end
+
+
 def css(selector)
   Nokogiri::HTML(body).css(selector)
 end
