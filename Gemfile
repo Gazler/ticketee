@@ -15,6 +15,7 @@ group :test do
   gem 'email_spec'
 end
 
+gem 'cancan'
 gem 'devise', '1.1.3'
 
 # Use unicorn as the web server

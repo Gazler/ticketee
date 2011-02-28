@@ -5,6 +5,31 @@ describe TicketsController do
   let(:project) { Factory(:project) }
   let(:ticket) { Factory(:ticket, :project => project) }
 
+
+  context "with permission to view the project" do
+    before do
+      sign_in(:user, user)
+      Permission.create(:user_id => user, :object => project, :action => "view")
+    end
+
+    def cannot_create_tickets!
+      response.should redirect_to(project)
+      flash[:alert].should eql("You are not allowed to create tickets on this project.")
+    end
+
+    it "cannot begin to create a ticket" do
+      get :new, :project_id => project.id
+      cannot_create_tickets!
+    end
+
+    it "cannot create a ticket without permission" do
+      post :create, :project_id => project.id
+      cannot_create_tickets!
+    end
+  end
+
+
+
   context "standard users" do
     it "cannot acces a ticket for a project they don't have access to" do
       sign_in(:user, user)
