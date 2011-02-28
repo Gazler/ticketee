@@ -1,6 +1,16 @@
 <h2><%= @ticket.title %></h2>
-<%= simple_format(@ticket.description) %>
-<small>Created by <%= @ticket.user.email %></small>
+<div id='ticket'>
+  Created by <%= @ticket.user.email %>
+  <%= simple_format(@ticket.description) %>
+
+  <% if @ticket.asset.exists? %>
+    <h3>Attached File</h3>
+    <div class="asset">
+      <p><%= link_to File.basename(@ticket.asset.path), @ticket.asset.url %></p>
+        <p><small><%= number_to_human_size(@ticket.asset.size) %></small></p>
+    </div>
+  <% end %>
+</div>
 <menu>
 <%= authorized?("edit tickets", @project) do %>
   <%= link_to "Edit", edit_project_ticket_path(@project, @ticket) %>
@@ -9,6 +19,5 @@
 <%= authorized?("delete tickets", @project) do %>
   <%= link_to "Delete", [@project, @ticket], :method => :delete, :confirm => "Are you sure?" %>
 <% end %>
-
 </menu>
 
