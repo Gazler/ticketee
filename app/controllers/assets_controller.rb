@@ -2,7 +2,7 @@ class AssetsController < ApplicationController
   before_filter :authenticate_user!
   def show
     asset = Asset.find(params[:id])
-    if current_user.can?(:view, asset.ticket.project)
+    if can?(:view, asset.ticket.project)
       send_file asset.asset.path, :filename     => asset.asset_file_name,
                                   :content_type => asset.asset_content_type
     else

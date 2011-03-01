@@ -4,13 +4,11 @@ describe AssetsController do
   let(:project) { Project.create(:name => "Ticketee") }
 
   let(:good_user) do
-    User.create(:email => "user@ticketee.com",
-    :password => "password")
+    create_user!
   end
 
   let(:bad_user) do
-    User.create(:email => "other_user@ticketee.com",
-    :password => "other_password")
+    create_user!(:email => "other_user@ticketee.com")
   end
 
   let(:ticket) do
@@ -25,7 +23,7 @@ describe AssetsController do
   end
 
   before do
-    good_user.permissions.create!(:action => "view", :object => @project)
+    good_user.permissions.create!(:action => "view", :object => project)
   end
 
   context "users with access" do
