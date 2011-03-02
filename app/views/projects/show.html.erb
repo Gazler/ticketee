@@ -13,7 +13,10 @@
 
 <ul id='tickets'>
   <% @project.tickets.each do |ticket| %>
-    <li><%= link_to "#{ticket.id} - #{ticket.title}", [@project, ticket] %></li>
+    <li>
+      <%= link_to ticket.title, [@project, ticket] %>
+      <%= render ticket.state if ticket.state %>
+    </li>
   <% end %>
 </ul>
 

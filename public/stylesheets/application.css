@@ -96,6 +96,7 @@ menu, #ticket .state, .states {
   float: right;
 }
 
+
 .comment .state {
   display: inline;
 }
@@ -113,6 +114,10 @@ menu, #ticket .state, .states {
   margin: 0px 5px;
   font-size: 80%;
   padding: 5px;
+}
+
+.states {
+    margin-top: -20px;
 }
 
 #ticket #tags {
@@ -143,10 +148,5 @@ menu, #ticket .state, .states {
 
 .comment, .new_comment {
   width: 75%;
-}
-
-.comment h4, .comment p {
-  width: 75%;
-  display: block;
 }
 
