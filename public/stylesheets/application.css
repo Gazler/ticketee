@@ -145,3 +145,8 @@ menu, #ticket .state, .states {
   width: 75%;
 }
 
+.comment h4, .comment p {
+  width: 75%;
+  display: block;
+}
+
