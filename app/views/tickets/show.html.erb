@@ -1,6 +1,7 @@
 <h2><%= @ticket.title %></h2>
 <div id='ticket'>
   Created by <%= @ticket.user.email %>
+  <%= render @ticket.state if @ticket.state %>
   <%= simple_format(@ticket.description) %>
 
  <% if !@ticket.assets.empty? %>
