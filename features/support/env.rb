@@ -11,10 +11,11 @@ require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumb
 require 'cucumber/rails/world'
 require 'cucumber/rails/active_record'
 require 'cucumber/web/tableish'
-
 require 'capybara/rails'
 require 'capybara/cucumber'
 require 'capybara/session'
+
+require 'selenium/client'
 #require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -51,8 +52,10 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 if defined?(ActiveRecord::Base)
   begin
     require 'database_cleaner'
+    require 'database_cleaner/cucumber'
     DatabaseCleaner.strategy = :truncation
   rescue LoadError => ignore_if_database_cleaner_not_present
+    p "MASSIVE ERROR HERE"
   end
 end
 

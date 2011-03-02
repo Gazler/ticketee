@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/jnicklas/capybara.git
+  revision: cb8de0c05e64985be1f591db37aea46629d20b39
+  specs:
+    capybara (0.4.1.1)
+      celerity (>= 0.7.9)
+      culerity (>= 0.2.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.27)
+      xpath (~> 0.1.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -32,17 +46,8 @@ GEM
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cancan (1.5.1)
-    capybara (0.4.1.1)
-      celerity (>= 0.7.9)
-      culerity (>= 0.2.4)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      selenium-webdriver (>= 0.0.27)
-      xpath (~> 0.1.3)
-    celerity (0.8.7)
-    childprocess (0.1.6)
+    celerity (0.8.8)
+    childprocess (0.1.7)
       ffi (~> 0.6.3)
     cucumber (0.10.0)
       builder (>= 2.1.2)
@@ -53,6 +58,7 @@ GEM
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
     culerity (0.2.15)
+    database_cleaner (0.6.4)
     devise (1.1.3)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
@@ -111,7 +117,8 @@ GEM
       rspec (= 2.5.0)
       webrat (>= 0.7.0)
     rubyzip (0.9.4)
-    selenium-webdriver (0.1.2)
+    selenium-client (1.2.18)
+    selenium-webdriver (0.1.3)
       childprocess (~> 0.1.5)
       ffi (~> 0.6.3)
       json_pure
@@ -138,12 +145,14 @@ PLATFORMS
 
 DEPENDENCIES
   cancan
-  capybara
+  capybara!
   cucumber-rails
+  database_cleaner
   devise (= 1.1.3)
   email_spec
   factory_girl
   paperclip
   rails (= 3.0.3)
   rspec-rails
+  selenium-client
   sqlite3-ruby

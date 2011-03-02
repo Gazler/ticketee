@@ -10,9 +10,11 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 group :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
-  gem 'capybara'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'factory_girl'
   gem 'email_spec'
+  gem 'selenium-client'
+  gem 'database_cleaner'
 end
 
 gem 'cancan'
