@@ -4,7 +4,7 @@
 
 
 <h2>Projects</h2>
-<ul>
+<ul id="projects">
   <% @projects.each do |project| %>
     <%= authorized?("view", project) do %>
       <li><%= link_to project.name, project %></li>

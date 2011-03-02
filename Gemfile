@@ -15,6 +15,7 @@ group :test do
   gem 'email_spec'
   gem 'selenium-client'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 gem 'cancan'
