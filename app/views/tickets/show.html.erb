@@ -4,6 +4,8 @@
   <%= render @ticket.state if @ticket.state %>
   <%= simple_format(@ticket.description) %>
 
+  <div id='tags'><%= render @ticket.tags %></div>
+
  <% if !@ticket.assets.empty? %>
     <h3>Assets</h3>
     <div class="assets">

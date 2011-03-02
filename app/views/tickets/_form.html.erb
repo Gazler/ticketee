@@ -9,6 +9,12 @@
     <%= f.text_area :description %>
   </p>
 
+  <p>
+    <%= label_tag :tags %>
+    <%= text_field_tag :tags, params[:tags] %>
+  </p>
+
+
   <div id="files">
     <% number = 0 %>
    <%= render :partial => "assets/form", :locals => { :number => number, :asset => @ticket.assets } %>
