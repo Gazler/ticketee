@@ -5,6 +5,26 @@ end
 Then /^there should be a part with content type "([^"]*)"$/ do |content_type |
   current_email.parts.detect do |p|
     p.content_type == content_type
-end.should_not be_nil
+  end.should_not be_nil
+end
+
+Given /^Action Mailer delivers via SMTP$/ do
+  ActionMailer::Base.delivery_method = :smtp
+end
+
+When /^I log into gmail with:$/ do |table|
+  details = table.hashes.first
+  @gmail = Gmail.connect(details["username"], details["password"])
+end
+
+Then /^there should be an email from Ticketee in my inbox$/ do
+ @gmail.inbox.find(:unread, :from => "gazlertests@gmail.com") do |mail|
+    p mail
+    if mail.subject =~ /^\[ticketee\]/
+      mail.delete!
+      @received_mail = true
+    end
+  end
+  @received_mail.should be_true
 end
 

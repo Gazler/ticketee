@@ -1,12 +1,12 @@
 class Notifier < ActionMailer::Base
-  default :from => "notifications@ticketee.com"
 
-  def comment_updated(comment)
+ def comment_updated(comment)
     @comment = comment
     users = comment.ticket.watchers - [comment.user]
-    recipients users.map(&:email)
-    subject "[ticketee] #{comment.ticket.project.name} - #{comment.ticket.title}"
-    from "Ticketee <youraccount@example.com>" do |format|
+
+    mail(:to => users.map(&:email),
+         :subject => "[ticketee] #{comment.ticket.project.name} - #{comment.ticket.title}",
+         :from => "Ticketee <ticketee+#{comment.project.id}+#{comment.ticket_id}@gmail.com>") do |format|
       format.text
       format.html
     end
