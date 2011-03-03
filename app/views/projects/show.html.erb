@@ -20,7 +20,7 @@
   <% end %>
 </ul>
 
-<%= form_tag search_project_tickets_path(@project), :method => :post do %>
+<%= form_tag search_project_tickets_path(@project), :method => :get do %>
   <%= label_tag "search" %>
   <%= text_field_tag "search", params[:search] %>
   <%= submit_tag "Search" %>
