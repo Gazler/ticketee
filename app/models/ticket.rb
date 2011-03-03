@@ -31,9 +31,8 @@ class Ticket < ActiveRecord::Base
     self.tags << tags
   end
 
-  private
   def creator_watches_me
-    self.watchers << user
+    self.watchers += [user]
   end
 
 end
