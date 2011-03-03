@@ -7,6 +7,7 @@ class Notifier < ActionMailer::Base
     subject "[ticketee] #{comment.ticket.project.name} - #{comment.ticket.title}"
     from "Ticketee <youraccount@example.com>" do |format|
       format.text
+      format.html
     end
   end
 end

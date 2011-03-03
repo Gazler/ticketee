@@ -9,7 +9,7 @@ describe TicketsController do
   context "with permission to view the project" do
     before do
       sign_in(:user, user)
-      Permission.create(:user_id => user, :object => project, :action => "view")
+      Permission.create(:user => user, :object => project, :action => "view")
     end
 
     def cannot_create_tickets!

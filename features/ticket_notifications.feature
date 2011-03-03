@@ -29,6 +29,9 @@ Feature: Emailing
     When "alice@ticketee.com" opens the email
     Then they should see "[ticketee] TextMate 2 - Release date" in the email subject
     And they should see "updated the Release date ticket" in the email body
-    When they click the first link in the email
+    And the email should contain 2 parts
+    And there should be a part with content type "text/html; charset=UTF-8"
+    And there should be a part with content type "text/plain; charset=UTF-8"
+    When they follow "view this ticket online" in the email
     Then I should see "Release date"
 
