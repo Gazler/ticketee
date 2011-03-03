@@ -34,6 +34,12 @@ class TicketsController < ApplicationController
   def edit
   end
 
+  def search
+    @tickets = @project.tickets.search(params[:search])
+    render "projects/show"
+  end
+
+
 
   def update
     if @ticket.update_attributes(params[:ticket])
