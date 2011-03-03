@@ -1,0 +1,10 @@
+Date: Thu, 03 Mar 2011 14:26:37 +0000
+From: Ticketee <youraccount@example.com>
+To: alice@ticketee.com, 
+ alice@ticketee.com
+Message-ID: <4d6fa51d40bd5_36e0418875c737f8@gazler-desktop.mail>
+Subject: [ticketee] TextMate 2 - Release date
+Mime-Version: 1.0
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+

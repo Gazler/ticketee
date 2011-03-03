@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110302150404) do
+ActiveRecord::Schema.define(:version => 20110303124052) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(:version => 20110302150404) do
 
   create_table "tags_tickets", :id => false, :force => true do |t|
     t.integer "tag_id"
+    t.integer "ticket_id"
+  end
+
+  create_table "ticket_watchers", :id => false, :force => true do |t|
+    t.integer "user_id"
     t.integer "ticket_id"
   end
 

@@ -8,7 +8,7 @@ When /^I check "([^"]*)" for "([^"]*)"$/ do |permission, name|
 end
 
 def create_permission(email, object, action)
-  Permission.create!(:user_id => User.find_by_email!(email), :object => object, :action => action)
+  Permission.create!(:user => User.find_by_email!(email), :object => object, :action => action)
 end
 
 def find_project(name)
