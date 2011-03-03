@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "/api/v1/Project", :type => :api do
+describe "/api/v1/project", :type => :api do
   let(:user) do
     user = create_user!
     user.update_attribute(:admin, true)
@@ -21,9 +21,9 @@ describe "/api/v1/Project", :type => :api do
     context "index" do
       let(:url) { "/api/v1/projects" }
       it "JSON" do
-        get "#{url}.json" "token="+token
-        last_response.body.should eql(Project.readable_by(user).to_json)
+        get "#{url}.json", "token="+token
         last_response.status.should eql(200)
+        last_response.body.should eql(Project.readable_by(user).to_json)
         projects = JSON.parse(last_response.body)
         projects.any? { |p| p["project"]["name"] == "Inspector" }.should be_true
       end
