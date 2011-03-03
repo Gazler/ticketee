@@ -4,4 +4,6 @@ log/*.log
 tmp/**/*
 public/system
 capybara*
+*gmail*
+config/initializers/mail.rb
 

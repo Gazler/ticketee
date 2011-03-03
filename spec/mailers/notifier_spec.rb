@@ -1,5 +1,11 @@
 require "spec_helper"
 
 describe Notifier do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "correctly sets the reply-to" do
+    comment = Factory(:comment)
+    mail = ActionMailer::Base.deliveries.last
+    mail.from.should eql(["youraccount+#{comment.project.id}+" +
+    "#{comment.ticket.id}@example.com"])
+  end
 end
+

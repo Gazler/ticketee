@@ -6,7 +6,7 @@ class Notifier < ActionMailer::Base
 
     mail(:to => users.map(&:email),
          :subject => "[ticketee] #{comment.ticket.project.name} - #{comment.ticket.title}",
-         :from => "Ticketee <ticketee+#{comment.project.id}+#{comment.ticket_id}@gmail.com>") do |format|
+         :from => "Ticketee <gazlertests+#{comment.project.id}+#{comment.ticket_id}@gmail.com>") do |format|
       format.text
       format.html
     end

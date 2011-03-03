@@ -32,7 +32,7 @@ class Ticket < ActiveRecord::Base
   end
 
   def creator_watches_me
-    self.watchers += [user]
+    self.watchers << user unless user.nil?
   end
 
 end
