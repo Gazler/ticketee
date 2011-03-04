@@ -3,6 +3,9 @@ Ticketee::Application.routes.draw do
     namespace :v1 do
       resources :projects
     end
+    namespace :v2 do
+      resources :projects
+    end
   end
   get "ticket/show"
 
