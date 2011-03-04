@@ -35,6 +35,26 @@ describe "/api/v1/project", :type => :api do
         projects.css("project name").text.should eql("Inspector")
       end
     end
+
+    context "show" do
+      let(:url) { "/api/v1/projects/#{project.id}"}
+
+      before do
+        Factory(:ticket, :title => "A ticket, nothing more.",
+                :project => project)
+      end
+
+      it "JSON" do
+        get "#{url}.json", :token => token
+        last_response.body.should eql(project.to_json(:methods => "last_ticket"))
+        last_response.status.should eql(200)
+
+        project_response = JSON.parse(last_response.body)["project"]
+
+        ticket_title = project_response["last_ticket"]["ticket"]["title"]
+        ticket_title.should_not be_blank
+      end
+    end
   end
 
   context "creating a project" do
@@ -55,6 +75,43 @@ describe "/api/v1/project", :type => :api do
       last_response.status.should eql(422)
       errors = {"name" => "can't be blank"}
       last_response.body.should eql(errors.to_json)
+    end
+  end
+
+  context "updating a project" do
+    let(:url) { "/api/v1/projects/#{project.id}" }
+    it "successful JSON" do
+      project.name.should eql("Inspector")
+      put "#{url}.json", :token => token,
+                          :project => {
+                            :name => "Not Inspector"
+                          }
+      last_response.status.should eql(200)
+
+      project.reload
+      project.name.should eql("Not Inspector")
+    end
+
+    it "unsuccessful JSON" do
+      project.name.should eql("Inspector")
+      put "#{url}.json", :token => token,
+                          :project => {
+                            :name => ""
+                          }
+      last_response.status.should eql(422)
+
+      project.reload
+      project.name.should eql("Inspector")
+      error = { :name => "can't be blank"}
+      last_response.body.should eql(error.to_json)
+    end
+  end
+
+  context "deleting a project" do
+    let(:url) { "/api/v1/projects/#{project.id}" }
+    it "JSON" do
+      delete "#{url}.json", :token => token
+      last_response.status.should eql(200)
     end
   end
 end

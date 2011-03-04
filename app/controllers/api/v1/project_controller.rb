@@ -1,4 +1,7 @@
 class Api::V1::ProjectsController < Api::V1::BaseController
+  before_filter :authorize_admin!, :except => [:index, :show]
+  before_filter :find_project, :only => [:show, :update, :destroy]
+
   def index
     respond_with(Project.all)
   end
@@ -11,6 +14,34 @@ class Api::V1::ProjectsController < Api::V1::BaseController
       respond_with(project)
     end
   end
+
+  def show
+    project = Project.find(params[:id])
+    respond_with(project, :methods => "last_ticket")
+  end
+
+  def update
+    @project.update_attributes(params[:project])
+    respond_with(@project)
+  end
+
+  def destroy
+    @project.destroy
+    respond_with(@project)
+  end
+
+
+  private
+
+  def find_project
+    @project = Project.for(current_user).find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    error = { :error => "The project you were looking for does not exist."}
+    respond_with(error, :status => 404)
+  end
+
+
+
 
 end
 
